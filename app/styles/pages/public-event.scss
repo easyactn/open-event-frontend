@@ -152,11 +152,7 @@
   }
 }
 
-.event-map > .g-map {
-  height: 100%;
-  width: 100%;
-}
-
-.event-map > .g-map > .g-map-canvas {
+.event-map > .leaflet-container {
   height: 300px;
+  width: 100%;
 }
