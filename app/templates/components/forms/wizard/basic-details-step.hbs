@@ -1,5 +1,5 @@
 <form class="ui form {{if isLoading 'loading'}}" autocomplete="off" {{action 'moveForward' on='submit' preventDefault=true}} novalidate>
-  <div class="field">
+  <div class="field"> 
     <label class="required" for="name">{{t 'Name'}}</label>
     {{input type='text' id='name' value=data.event.name}}
   </div>
@@ -94,25 +94,16 @@
         helpText=(t 'We recommend using at least a 2160x1080px (2:1 ratio) image')}}
     </div>
   </div>
-
   <div class="ui section divider"></div>
   <div class="field">
-    <div class="ui slider checkbox">
-      {{input type='checkbox' checked=data.event.hasOrganizerInfo id='add_organizer_information'}}
-      <label for="add_organizer_information">{{t 'Add organizer information'}}</label>
-    </div>
+    <label for="organizer_name">{{t 'Organizer Name'}}</label>
+    {{input type='text' id='organizer_name' value=data.event.organizerName}}
+  </div>
+  <div class="field">
+    <label for="organizer_description">{{t 'Organizer Description'}}</label>
+    {{widgets/forms/rich-text-editor id='organizer_description' value=data.event.organizerDescription}}
   </div>
 
-  {{#if data.event.hasOrganizerInfo}}
-    <div class="field">
-      <label for="organizer_name">{{t 'Organizer Name'}}</label>
-      {{input type='text' id='organizer_name' value=data.event.organizerName}}
-    </div>
-    <div class="field">
-      <label for="organizer_description">{{t 'Organizer Description'}}</label>
-      {{widgets/forms/rich-text-editor id='organizer_description' value=data.event.organizerDescription}}
-    </div>
-  {{/if}}
   <div class="ui section divider"></div>
   <div class="grouped fields">
     <label>{{t 'Links & Social Media'}}</label>
@@ -491,18 +482,9 @@
   </div>
   <div class="ui section divider"></div>
   <div class="field">
-    <div class="ui slider checkbox">
-      {{input type='checkbox' checked=hasCodeOfConduct id='add_code_of_conduct'}}
-      <label for="add_code_of_conduct">{{t 'Add Code of Conduct'}}</label>
-    </div>
+    <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
+    {{widgets/forms/rich-text-editor textareaId='code_of_conduct' value=data.event.codeOfConduct}}
   </div>
-
-  {{#if hasCodeOfConduct}}
-    <div class="field">
-      <label for="code_of_conduct">{{t 'Code of Conduct'}}</label>
-      {{widgets/forms/rich-text-editor textareaId='code_of_conduct' value=data.event.codeOfConduct}}
-    </div>
-  {{/if}}
   <div class="ui section divider"></div>
   <div class="field">
     <label for="license">
