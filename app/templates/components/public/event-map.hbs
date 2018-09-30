@@ -1,5 +1,5 @@
 {{#if event.isMapShown}}
-  <div class="eight wide column event-map">
+  <div class="sixteen wide column event-map">
     <h1>{{t 'Getting Here'}}</h1>
     {{#leaflet-map lat=event.latitude lng=event.longitude zoom=10}}
   		{{tile-layer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
@@ -13,9 +13,13 @@
   		{{/marker-layer}}
 
 	{{/leaflet-map}}
+  <h1>{{t 'Address'}}</h1>
+  <p>{{event.locationName}}</p>
   </div>
 {{/if}}
-<div class="{{if event.isMapShown 'eight' 'sixteen'}} wide column address">
+{{#else}}
+<div class="sixteen wide column address">
   <h1>{{t 'Address'}}</h1>
   <p>{{event.locationName}}</p>
 </div>
+{{/else}}
