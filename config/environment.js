@@ -7,7 +7,6 @@ function getSentryServer(dsn, withProtocol = true) {
   return `${withProtocol ? `${dsnArray[0]}//` : ''}${dsnArray[2].split('@')[1]}`;
 }
 
-
 module.exports = function(environment) {
   let ENV = {
     appName                  : process.env.APP_NAME || 'Open Event',
@@ -110,12 +109,6 @@ module.exports = function(environment) {
     headers                  : {}
   };
 
-  ENV['g-map'] = {
-    libraries : ['places'],
-    key       : process.env.GOOGLE_API_KEY,
-    protocol  : 'https'
-  };
-
   ENV.sentry.hostname = getSentryServer(ENV.sentry.dsn, false);
   ENV.sentry.server = getSentryServer(ENV.sentry.dsn, true);
 
@@ -125,11 +118,9 @@ module.exports = function(environment) {
       '\'self\'',
       'ws://eventyay.local:65520',
       'ws://localhost:49153',
-      'https://maps.gstatic.com',
       'https://*.eventyay.com',
       'https://eventyay.com',
       'https://open-event-api-dev.herokuapp.com',
-      'www.google-analytics.com',
       'http://127.0.0.1:5000',
       'https://easyactn.kaus.uberspace.de',
       'https://*.basemaps.cartocdn.com',
@@ -138,13 +129,10 @@ module.exports = function(environment) {
     'script-src': [
       '\'self\'',
       '\'unsafe-inline\'',
-      'https://*.googleapis.com',
-      'https://maps.gstatic.com',
       'https://eventyay.com',
       'https://*.eventyay.com',
       'http://eventyay.local:65520',
       'http://localhost:49153',
-      'www.google-analytics.com',
       'https://platform.twitter.com',
       'https://cdn.syndication.twimg.com',
       'http://127.0.0.1:5000',
