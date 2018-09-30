@@ -1,7 +1,7 @@
 {{#if event.isMapShown}}
   <div class="sixteen wide column event-map">
     <h1>{{t 'Getting Here'}}</h1>
-    {{#leaflet-map lat=event.latitude lng=event.longitude zoom=10}}
+    {{#leaflet-map lat=event.latitude lng=event.longitude zoom=13}}
   		{{tile-layer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
   		{{#marker-layer lat=event.latitude lng=event.longitude}}
