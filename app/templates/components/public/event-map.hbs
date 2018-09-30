@@ -1,12 +1,25 @@
 {{#if event.isMapShown}}
-  <div class="eight wide column event-map">
+  <div class="sixteen wide column event-map">
     <h1>{{t 'Getting Here'}}</h1>
-    {{#g-map lat=event.latitude lng=event.longitude zoom=15 gestureHandling='cooperative' streetView='StreetViewPanorama' as |context|}}
-      {{g-map-marker context lat=event.latitude lng=event.longitude}}
-    {{/g-map}}
+    {{#leaflet-map lat=event.latitude lng=event.longitude zoom=10}}
+  		{{tile-layer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+  		{{#marker-layer lat=event.latitude lng=event.longitude}}
+    		{{#popup-layer}}
+      			<h3>{{event.name}}</h3>
+            <p>{{event.startsAt}}</p>
+            <p>{{event.locationName}}</p>
+    		{{/popup-layer}}
+  		{{/marker-layer}}
+
+	{{/leaflet-map}}
+  <h1>{{t 'Address'}}</h1>
+  <p>{{event.locationName}}</p>
   </div>
 {{/if}}
-<div class="{{if event.isMapShown 'eight' 'sixteen'}} wide column address">
+{{#else}}
+<div class="sixteen wide column address">
   <h1>{{t 'Address'}}</h1>
   <p>{{event.locationName}}</p>
 </div>
+{{/else}}

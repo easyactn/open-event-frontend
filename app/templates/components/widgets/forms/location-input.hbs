@@ -29,9 +29,9 @@
       </div>
     </div>
     <div class="column">
-      {{#g-map lat=lat lng=lng zoom=zoom class='google-maps' address=combinedAddress as |context|}}
-        {{g-map-address-marker context address=combinedAddress onLocationChange=(action 'onLocationChangeHandler')}}
-      {{/g-map}}
+      {{#leaflet-map lat=lat lng=lng zoom=zoom}}
+        {{tile-layer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+      {{/leaflet-map}}
     </div>
   </div>
 {{else}}
