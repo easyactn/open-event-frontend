@@ -131,6 +131,7 @@ module.exports = function(environment) {
       'https://open-event-api-dev.herokuapp.com',
       'www.google-analytics.com',
       'http://127.0.0.1:5000',
+      'https://easyactn.kaus.uberspace.de',
       ENV.sentry.hostname
     ],
     'script-src': [
